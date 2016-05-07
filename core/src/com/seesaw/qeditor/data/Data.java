@@ -1,5 +1,6 @@
 package com.seesaw.qeditor.data;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public interface Data {
@@ -82,13 +83,13 @@ public interface Data {
 
 
     /** Возвращает список связанных с Ответом Скриптов*/
-    public String[] getAnswerScripts(String id);
+    public ArrayList<ArrayList<String>> getAnswerScripts(String id);
 
     /** Присоединяет к Ответу указанный Скрипт */
-    public boolean addAnswerScript(String answerID, String scriptID);
+    public boolean addAnswerScript(String answerID, String scriptID, int list);
 
     /** Отсоединяет Скрипт от Ответа, Скрипт не удаляется из базы данных */
-    public boolean removeAnswerScript(String answerID, String scriptID);
+    public boolean removeAnswerScript(String answerID, String scriptID, int list);
 
 
 
@@ -127,13 +128,13 @@ public interface Data {
 
 
     /** Возвращает список связанных с Таймером Скриптов*/
-    public String[] getTimerScripts(String id);
+    public ArrayList<ArrayList<String>> getTimerScripts(String id);
 
     /** Присоединяет к Таймером указанный Скрипт */
-    public boolean addTimerScript(String answerID, String scriptID);
+    public boolean addTimerScript(String answerID, String scriptID, int list);
 
     /** Отсоединяет Скрипт от Таймера, Скрипт не удаляется из базы данных */
-    public boolean removeTimerScript(String answerID, String scriptID);
+    public boolean removeTimerScript(String answerID, String scriptID, int list);
 
 
 
