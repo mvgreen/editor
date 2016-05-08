@@ -17,6 +17,15 @@ public interface Data {
      *  index - новое значение индекса. */
     public void setLastIndex(int type, int index);
 
+    /** Получить новый индекс для Шага, Ответа, Таймера или Скрипта.
+     *  type - Author.STEP / Author.ANSWER / Author.TIMER / Author.SCRIPT. */
+    public String getNewIndex(int type);
+
+    /** Сохранить автора в Preferences */
+    public void saveAuthorInfo();
+
+    /** Загрузить информацию об авторе из Preferences */
+    public void loadAuthorInfo();
 
 
     /** Загружает БД из файлов */

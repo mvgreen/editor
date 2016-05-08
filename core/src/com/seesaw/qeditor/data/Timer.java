@@ -6,7 +6,8 @@ import java.util.Date;
 /** Таймер - запланированное во времени действие.
  *  Таймер может сработать или в конкретное время, или через промежуток времени.
  *  При срабатывании перебирается каждый из списков скриптов,
- *  в каждом списке выполняется первый скрипт, чье условие выполнится.*/
+ *  в каждом списке выполняется первый скрипт, чье условие выполнится.
+ *  Нам требуется лишь два списка.*/
 public class Timer {
 
     static final int PLUS           = 1;
@@ -22,6 +23,8 @@ public class Timer {
     public Timer(String id) {
         this.id = id;
         scripts = new ArrayList<ArrayList<String>>();
+        scripts.add(new ArrayList<String>());
+        scripts.add(new ArrayList<String>());
         time = new Date();
     }
 }
