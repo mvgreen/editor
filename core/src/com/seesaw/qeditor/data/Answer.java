@@ -13,6 +13,9 @@ public class Answer {
     String                          text;
     ArrayList<ArrayList<String>>    scripts;
 
+    /** Конструктор без аргументов требуется для десериализации. */
+    public Answer(){}
+
     public Answer(String id) {
         this.id = id;
         scripts = new ArrayList<ArrayList<String>>();

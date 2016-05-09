@@ -9,6 +9,9 @@ public class Script {
     String  condition;
     String  algorithm;
 
+    /** Конструктор без аргументов требуется для десериализации. */
+    public Script(){}
+
     public Script(String id) {
         this.id = id;
     }

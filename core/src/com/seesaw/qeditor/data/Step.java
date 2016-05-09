@@ -12,6 +12,9 @@ public class Step {
     ArrayList<String>   answers;
     ArrayList<String>   timers;
 
+    /** Конструктор без аргументов требуется для десериализации. */
+    public Step(){}
+
     public Step(String id) {
         this.id = id;
         answers = new ArrayList<String>();

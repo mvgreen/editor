@@ -20,6 +20,9 @@ public class Timer {
     boolean                         autoCancel;
     ArrayList<ArrayList<String >>   scripts;
 
+    /** Конструктор без аргументов требуется для десериализации. */
+    public Timer(){}
+
     public Timer(String id) {
         this.id = id;
         scripts = new ArrayList<ArrayList<String>>();
