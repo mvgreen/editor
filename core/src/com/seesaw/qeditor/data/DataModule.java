@@ -22,11 +22,11 @@ public class DataModule implements Data {
 
     public DataModule(FileHandle file){
         databaseFile = file;
+        author = new Author();
         if (!databaseFile.exists()){
             storage = new Storage();
             saveDataBase();
         }
-        author = new Author();
         loadDataBase();
     }
 
@@ -87,8 +87,6 @@ public class DataModule implements Data {
 
     @Override
     public String[] getSteps() {
-        if (storage.steps.size() == 0)
-            return null;
         String[] array = new String[storage.steps.size()];
         int i = 0;
         for (Step step : storage.steps.values()){
@@ -173,8 +171,6 @@ public class DataModule implements Data {
 
     @Override
     public String[] getAnswers() {
-        if (storage.answers.size() == 0)
-            return null;
         String[] array = new String[storage.answers.size()];
         int i = 0;
         for (Answer answer : storage.answers.values()){
@@ -200,8 +196,6 @@ public class DataModule implements Data {
 
     @Override
     public ArrayList<ArrayList<String>> getAnswerScripts(String id) {
-        if (!storage.answers.containsKey(id))
-            return null;
         return storage.answers.get(id).scripts;
     }
 
@@ -238,8 +232,6 @@ public class DataModule implements Data {
 
     @Override
     public String[] getTimers() {
-        if (storage.timers.size() == 0)
-            return null;
         String[] array = new String[storage.timers.size()];
         int i = 0;
         for (Timer timer : storage.timers.values()){
@@ -305,8 +297,6 @@ public class DataModule implements Data {
 
     @Override
     public ArrayList<ArrayList<String>> getTimerScripts(String id) {
-        if (!storage.timers.containsKey(id))
-            return null;
         return storage.timers.get(id).scripts;
     }
 
@@ -343,8 +333,6 @@ public class DataModule implements Data {
 
     @Override
     public String[] getScripts() {
-        if (storage.scripts.size() == 0)
-            return null;
         String[] array = new String[storage.scripts.size()];
         int i = 0;
         for (Script script : storage.scripts.values()){
