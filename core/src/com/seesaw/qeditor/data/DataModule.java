@@ -21,8 +21,8 @@ public class DataModule implements Data {
     }
 
     public DataModule(FileHandle file){
-        databaseFile = file;
         author = new Author();
+        databaseFile = file;
         if (!databaseFile.exists()){
             storage = new Storage();
             saveDataBase();
