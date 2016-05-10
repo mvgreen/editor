@@ -112,9 +112,13 @@ public class DataModule implements Data {
 
     @Override
     public String[] getStepAnswers(String id) {
-        if (!storage.steps.containsKey(id))
-            return null;
-        return (String[]) storage.steps.get(id).answers.toArray();
+        if (!storage.steps.containsKey(id) || storage.steps.get(id).answers.size() == 0)
+            return new String[0];
+        String[] array = new String[storage.steps.get(id).answers.size()];
+        for (int i = 0; i < array.length; i++){
+            array[i] = (String) storage.steps.get(id).answers.toArray()[i];
+        }
+        return array;
     }
 
     @Override
@@ -136,9 +140,13 @@ public class DataModule implements Data {
 
     @Override
     public String[] getStepTimers(String id) {
-        if (!storage.steps.containsKey(id))
-            return null;
-        return (String[]) storage.steps.get(id).timers.toArray();
+        if (!storage.steps.containsKey(id) || storage.steps.get(id).timers.size() == 0)
+            return new String[0];
+        String[] array = new String[storage.steps.get(id).timers.size()];
+        for (int i = 0; i < array.length; i++){
+            array[i] = (String) storage.steps.get(id).timers.toArray()[i];
+        }
+        return array;
     }
 
     @Override
