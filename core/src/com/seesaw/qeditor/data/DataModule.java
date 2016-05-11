@@ -261,9 +261,7 @@ public class DataModule implements Data {
         if (!storage.timers.containsKey(id))
             return false;
         Timer t = storage.timers.get(id);
-        t.time.setHours(hours);
-        t.time.setMinutes(minutes);
-        t.time.setSeconds(seconds);
+        t.time.setTime(hours, minutes, seconds);
         return true;
     }
 

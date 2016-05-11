@@ -5,20 +5,6 @@ public class Clock {
     int minutes;
     int seconds;
 
-    public void setHours(int hours) {
-        this.hours = hours;
-    }
-
-    public void setMinutes(int minutes){
-        this.minutes = minutes%60;
-        hours += minutes/60;
-    }
-
-    public void setSeconds(int seconds){
-        this.seconds = seconds%60;
-        setMinutes(seconds/60);
-    }
-
     public int getHours(boolean simpleClock){
         return simpleClock ? hours%24 : hours;
     }
@@ -29,5 +15,17 @@ public class Clock {
 
     public int getSeconds(){
         return seconds;
+    }
+
+    public void setTime(int hours, int minutes, int seconds) {
+        seconds = seconds + minutes * 60 + hours * 60 * 60;
+
+        this.seconds = seconds % 60;
+        seconds /= 60;
+
+        this.minutes = seconds % 60;
+        seconds /= 60;
+
+        this.hours = seconds;
     }
 }
