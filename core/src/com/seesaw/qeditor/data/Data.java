@@ -113,13 +113,13 @@ public interface Data {
 
 
     /** Возвращает время, установленное в Таймере, тип Таймера не учитывается */
-    public Date getTimerTime(String id);
+    public Clock getTimerTime(String id);
 
     /** Заменяет время в Таймере на новое, тип Таймера не учитывается */
     public boolean setTimerTime(String id, int hours, int minutes, int seconds);
 
     /** Аналогичный предыдущему */
-    public boolean setTimerTime(String id, Date time);
+    public boolean setTimerTime(String id, Clock time);
 
 
     /** Возвращает тип Таймера, 1 - таймер прибавляется к текущему времени, -1 - отнимается, 0 - "будильник" */

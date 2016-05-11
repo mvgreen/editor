@@ -132,7 +132,7 @@ public class DataModule implements Data {
 
     @Override
     public boolean removeStepAnswer(String stepID, String answerID) {
-        if (!storage.steps.containsKey(stepID) || !storage.answers.containsKey(answerID))
+        if (!storage.steps.containsKey(stepID))
             return false;
         storage.steps.get(stepID).answers.remove(answerID);
         return true;
@@ -160,7 +160,7 @@ public class DataModule implements Data {
 
     @Override
     public boolean removeStepTimer(String stepID, String timerID) {
-        if (!storage.steps.containsKey(stepID) || !storage.timers.containsKey(timerID))
+        if (!storage.steps.containsKey(stepID))
             return false;
         storage.steps.get(stepID).timers.remove(timerID);
         return true;
@@ -221,7 +221,7 @@ public class DataModule implements Data {
 
     @Override
     public boolean removeAnswerScript(String answerID, String scriptID, int list) {
-        if (!storage.answers.containsKey(answerID) || !storage.scripts.containsKey(scriptID) || list > 1 || list < 0)
+        if (!storage.answers.containsKey(answerID) || list > 1 || list < 0)
             return false;
         storage.answers.get(answerID).scripts.get(list).remove(scriptID);
         return true;
@@ -250,7 +250,7 @@ public class DataModule implements Data {
     }
 
     @Override
-    public Date getTimerTime(String id) {
+    public Clock getTimerTime(String id) {
         if (!storage.timers.containsKey(id))
             return null;
         return storage.timers.get(id).time;
@@ -268,7 +268,7 @@ public class DataModule implements Data {
     }
 
     @Override
-    public boolean setTimerTime(String id, Date time) {
+    public boolean setTimerTime(String id, Clock time) {
         if (!storage.timers.containsKey(id))
             return false;
         storage.timers.get(id).time = time;
@@ -322,7 +322,7 @@ public class DataModule implements Data {
 
     @Override
     public boolean removeTimerScript(String timerID, String scriptID, int list) {
-        if (!storage.timers.containsKey(timerID) || !storage.scripts.containsKey(scriptID) || list > 1 || list < 0)
+        if (!storage.timers.containsKey(timerID) || list > 1 || list < 0)
             return false;
         storage.timers.get(timerID).scripts.get(list).remove(scriptID);
         return true;

@@ -15,7 +15,7 @@ public class Timer {
     static final int ALARM_CLOCK    = 0;
 
     String                          id;
-    Date                            time;
+    Clock                           time;
     int                             type;
     boolean                         autoCancel;
     ArrayList<ArrayList<String >>   scripts;
@@ -28,6 +28,6 @@ public class Timer {
         scripts = new ArrayList<ArrayList<String>>();
         scripts.add(new ArrayList<String>());
         scripts.add(new ArrayList<String>());
-        time = new Date();
+        time = new Clock();
     }
 }
