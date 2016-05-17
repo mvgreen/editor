@@ -1,8 +1,14 @@
 package com.seesaw.qeditor.data;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public interface Data {
+
+    final int TYPE_STEP = 0;
+    final int TYPE_ANSW = 1;
+    final int TYPE_TIMER = 2;
+    final int TYPE_SCRIPT = 3;
 
     /** Заменяет метку автора. Метки ставятся в начале ID Шагов, Ответов, Таймеров и Скриптов.
      *  Метки существующих ID не будут заменяться. */
@@ -169,4 +175,10 @@ public interface Data {
     /** Заменяет алгоритм Скрипта на новый */
     boolean setAlgorithm(String id, String newAlgorithm);
 
+    /** Возвращает список полей базы данных, содержащих данную подстроку.
+     *  Поиск происходит по текстовым полям, в том числе id.
+     *  Каждому типу поля соответствует свой массив.
+     *  Для обращения к массиву с нужным типом используются константы, описанные в интерфейсе. */
+    ArrayList<LinkedList<String>>
+    find(String substring, boolean inSteps, boolean inAnswers, boolean inTimers, boolean inScripts);
 }

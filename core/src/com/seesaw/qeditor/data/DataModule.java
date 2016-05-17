@@ -2,10 +2,12 @@ package com.seesaw.qeditor.data;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.Json;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 
 /** Класс является СУБД, данные хранятся в отдельном объекте в виде HashMap-ов.
  *  В целях безопасности методы класса не позволяют работать с полями базы напрямую. */
@@ -374,5 +376,44 @@ public class DataModule implements Data {
             return false;
         storage.scripts.get(id).algorithm = newAlgorithm;
         return true;
+    }
+
+    @Override
+    public ArrayList<LinkedList<String>>
+    find(String substring, boolean inSteps, boolean inAnswers, boolean inTimers, boolean inScripts) {
+        ArrayList<LinkedList<String>> array = new ArrayList<LinkedList<String>>(4);
+
+        for (int i = 0; i < 4; i++)
+            array.add(new LinkedList<String>());
+
+        if (substring == null || substring.trim().equals(""))
+            return array;
+
+        if (inSteps)
+            for (Step step : storage.steps.values()){
+                if (step.id.contains(substring) || step.text.contains(substring))
+                    array.get(TYPE_STEP).add(step.id);
+            }
+
+        if (inAnswers)
+            for (Answer answer : storage.answers.values()){
+                if (answer.id.contains(substring) || answer.text.contains(substring))
+                    array.get(TYPE_ANSW).add(answer.id);
+            }
+
+        if (inTimers)
+            for (Timer timer : storage.timers.values()){
+                if (timer.id.contains(substring))
+                    array.get(TYPE_TIMER).add(timer.id);
+            }
+
+        if (inScripts)
+            for (Script script : storage.scripts.values()){
+                if (script.id.contains(substring) || script.condition.contains(substring)
+                        || script.algorithm.contains(substring))
+                    array.get(TYPE_SCRIPT).add(script.id);
+            }
+
+        return array;
     }
 }
