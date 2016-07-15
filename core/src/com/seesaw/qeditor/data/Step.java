@@ -9,6 +9,7 @@ public class Step {
 
     String              id;
     String              text;
+    Clock               delay;
     ArrayList<String>   answers;
     ArrayList<String>   timers;
 
@@ -17,6 +18,7 @@ public class Step {
 
     public Step(String id) {
         this.id = id;
+        delay = new Clock();
         answers = new ArrayList<String>();
         timers = new ArrayList<String>();
     }

@@ -113,6 +113,28 @@ public class DataModule implements Data {
     }
 
     @Override
+    public Clock getStepDelay(String id) {
+        Step s = storage.steps.get(id);
+        return s != null ? s.delay : null;
+    }
+
+    @Override
+    public boolean setStepDelay(String id, Clock newDelay) {
+        if (!storage.steps.containsKey(id) || newDelay == null)
+            return false;
+        storage.steps.get(id).delay = newDelay;
+        return true;
+    }
+
+    @Override
+    public boolean setStepDelay(String id, int hours, int minutes, int seconds) {
+        if (!storage.steps.containsKey(id))
+            return false;
+        storage.steps.get(id).delay.setTime(hours, minutes, seconds);
+        return true;
+    }
+
+    @Override
     public String[] getStepAnswers(String id) {
         if (!storage.steps.containsKey(id) || storage.steps.get(id).answers.size() == 0)
             return new String[0];
@@ -262,8 +284,7 @@ public class DataModule implements Data {
     public boolean setTimerTime(String id, int hours, int minutes, int seconds) {
         if (!storage.timers.containsKey(id))
             return false;
-        Timer t = storage.timers.get(id);
-        t.time.setTime(hours, minutes, seconds);
+        storage.timers.get(id).time.setTime(hours, minutes, seconds);
         return true;
     }
 

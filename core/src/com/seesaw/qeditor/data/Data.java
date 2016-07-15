@@ -57,6 +57,15 @@ public interface Data {
     /** Заменяет текст Шага на новый */
     boolean setStepText(String id, String newText);
 
+    /** Возвращает задержку перед выводом текста Шага.
+     *  Если Шага не существует, возвращает null! */
+    Clock getStepDelay(String id);
+
+    /** Устанавливает новое значение для задержки Шага */
+    boolean setStepDelay(String id, Clock newDelay);
+
+    /** Устанавливает новое значение для задержки Шага */
+    boolean setStepDelay(String id, int hours, int minutes, int seconds);
 
     /** Возвращает список связанных с Шагом Ответов */
     String[] getStepAnswers(String id);
