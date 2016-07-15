@@ -105,6 +105,13 @@ public interface Data {
     boolean setAnswerText(String id, String newText);
 
 
+    /** Возвращает id Шага, привязанного к Ответу или пустую строку "" */
+    String getAnswerStep(String id);
+
+    /** Устанавливает Шаг для безусловного перехода (ни один из скриптов не будет выполнен) */
+    boolean setAnswerStep(String id, String newStep);
+
+
     /** Возвращает список связанных с Ответом Скриптов*/
     ArrayList<ArrayList<String>> getAnswerScripts(String id);
 

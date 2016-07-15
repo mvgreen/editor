@@ -227,6 +227,19 @@ public class DataModule implements Data {
     }
 
     @Override
+    public String getAnswerStep(String id) {
+        return storage.answers.containsKey(id) ? storage.answers.get(id).step : "<Answer is not exists>";
+    }
+
+    @Override
+    public boolean setAnswerStep(String id, String newStep) {
+        if (!storage.answers.containsKey(id) || newStep == null)
+            return false;
+        storage.answers.get(id).step = newStep;
+        return true;
+    }
+
+    @Override
     public ArrayList<ArrayList<String>> getAnswerScripts(String id) {
         return storage.answers.get(id).scripts;
     }
