@@ -157,6 +157,13 @@ public interface Data {
     boolean setTimerAutoCancel(String id, boolean autoCancel);
 
 
+    /** Возвращает присоединенный к Таймеру Шаг */
+    String getTimerStep(String id);
+
+    /** Устанавливает новый привязанный к Таймеру Шаг */
+    boolean setTimerStep(String id, String newStep);
+
+
     /** Возвращает список связанных с Таймером Скриптов*/
     ArrayList<ArrayList<String>> getTimerScripts(String id);
 

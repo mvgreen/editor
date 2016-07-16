@@ -338,6 +338,19 @@ public class DataModule implements Data {
     }
 
     @Override
+    public String getTimerStep(String id) {
+        return storage.timers.containsKey(id) ? storage.timers.get(id).step : "<Timer is not exists>";
+    }
+
+    @Override
+     public boolean setTimerStep(String id, String newStep) {
+        if (!storage.timers.containsKey(id) || newStep == null)
+            return false;
+        storage.timers.get(id).step = newStep;
+        return true;
+    }
+
+    @Override
     public ArrayList<ArrayList<String>> getTimerScripts(String id) {
         return storage.timers.get(id).scripts;
     }

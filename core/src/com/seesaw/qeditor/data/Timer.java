@@ -18,6 +18,7 @@ public class Timer {
     Clock                           time;
     int                             type;
     boolean                         autoCancel;
+    String                          step;
     ArrayList<ArrayList<String >>   scripts;
 
     /** Конструктор без аргументов требуется для десериализации. */
