@@ -113,13 +113,13 @@ public interface Data {
 
 
     /** Возвращает список связанных с Ответом Скриптов*/
-    ArrayList<ArrayList<String>> getAnswerScripts(String id);
+    ArrayList<String> getAnswerScripts(String id);
 
     /** Присоединяет к Ответу указанный Скрипт */
-    boolean addAnswerScript(String answerID, String scriptID, int list);
+    boolean addAnswerScript(String answerID, String scriptID);
 
     /** Отсоединяет Скрипт от Ответа, Скрипт не удаляется из базы данных */
-    boolean removeAnswerScript(String answerID, String scriptID, int list);
+    boolean removeAnswerScript(String answerID, String scriptID);
 
 
 
@@ -165,13 +165,13 @@ public interface Data {
 
 
     /** Возвращает список связанных с Таймером Скриптов*/
-    ArrayList<ArrayList<String>> getTimerScripts(String id);
+    ArrayList<String> getTimerScripts(String id);
 
     /** Присоединяет к Таймером указанный Скрипт */
-    boolean addTimerScript(String answerID, String scriptID, int list);
+    boolean addTimerScript(String answerID, String scriptID);
 
     /** Отсоединяет Скрипт от Таймера, Скрипт не удаляется из базы данных */
-    boolean removeTimerScript(String answerID, String scriptID, int list);
+    boolean removeTimerScript(String answerID, String scriptID);
 
 
 

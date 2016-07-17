@@ -19,16 +19,14 @@ public class Timer {
     int                             type;
     boolean                         autoCancel;
     String                          step;
-    ArrayList<ArrayList<String >>   scripts;
+    ArrayList<String>               scripts;
 
     /** Конструктор без аргументов требуется для десериализации. */
     public Timer(){}
 
     public Timer(String id) {
         this.id = id;
-        scripts = new ArrayList<ArrayList<String>>();
-        scripts.add(new ArrayList<String>());
-        scripts.add(new ArrayList<String>());
+        scripts = new ArrayList<String>();
         time = new Clock();
     }
 }

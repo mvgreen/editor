@@ -12,7 +12,7 @@ public class Answer {
     String                          id;
     String                          text;
     String                          step;
-    ArrayList<ArrayList<String>>    scripts;
+    ArrayList<String>               scripts;
 
     /** Конструктор без аргументов требуется для десериализации. */
     public Answer(){}
@@ -20,8 +20,6 @@ public class Answer {
     public Answer(String id) {
         this.id = id;
         step = "";
-        scripts = new ArrayList<ArrayList<String>>();
-        scripts.add(new ArrayList<String>());
-        scripts.add(new ArrayList<String>());
+        scripts = new ArrayList<String>();
     }
 }
