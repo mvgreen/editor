@@ -240,27 +240,25 @@ public class DataModule implements Data {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getAnswerScripts(String id) {
+    public ArrayList<String> getAnswerScripts(String id) {
         return storage.answers.get(id).scripts;
     }
 
     @Override
-    public boolean addAnswerScript(String answerID, String scriptID, int list) {
-        if (!storage.answers.containsKey(answerID) || !storage.scripts.containsKey(scriptID) || list > 1 || list < 0)
+    public boolean addAnswerScript(String answerID, String scriptID) {
+        if (!storage.answers.containsKey(answerID) || !storage.scripts.containsKey(scriptID))
             return false;
 
-        ArrayList<String> array = storage.answers.get(answerID).scripts.get(list);
-
-        if (!array.contains(scriptID))
-            array.add(scriptID);
+        if (!storage.answers.get(answerID).scripts.contains(scriptID))
+            storage.answers.get(answerID).scripts.add(scriptID);
         return true;
     }
 
     @Override
-    public boolean removeAnswerScript(String answerID, String scriptID, int list) {
-        if (!storage.answers.containsKey(answerID) || list > 1 || list < 0)
+    public boolean removeAnswerScript(String answerID, String scriptID) {
+        if (!storage.answers.containsKey(answerID))
             return false;
-        storage.answers.get(answerID).scripts.get(list).remove(scriptID);
+        storage.answers.get(answerID).scripts.remove(scriptID);
         return true;
     }
 
@@ -351,27 +349,25 @@ public class DataModule implements Data {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getTimerScripts(String id) {
+    public ArrayList<String> getTimerScripts(String id) {
         return storage.timers.get(id).scripts;
     }
 
     @Override
-    public boolean addTimerScript(String timerID, String scriptID, int list) {
-        if (!storage.timers.containsKey(timerID) || !storage.scripts.containsKey(scriptID) || list > 1 || list < 0)
+    public boolean addTimerScript(String timerID, String scriptID) {
+        if (!storage.timers.containsKey(timerID) || !storage.scripts.containsKey(scriptID))
             return false;
 
-        ArrayList<String> array = storage.timers.get(timerID).scripts.get(list);
-
-        if (!array.contains(scriptID))
-            array.add(scriptID);
+        if (!storage.timers.get(timerID).scripts.contains(scriptID))
+            storage.timers.get(timerID).scripts.add(scriptID);
         return true;
     }
 
     @Override
-    public boolean removeTimerScript(String timerID, String scriptID, int list) {
-        if (!storage.timers.containsKey(timerID) || list > 1 || list < 0)
+    public boolean removeTimerScript(String timerID, String scriptID) {
+        if (!storage.timers.containsKey(timerID))
             return false;
-        storage.timers.get(timerID).scripts.get(list).remove(scriptID);
+        storage.timers.get(timerID).scripts.remove(scriptID);
         return true;
     }
 
