@@ -1,5 +1,5 @@
 android {
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.3"
     compileSdkVersion 23
     sourceSets {
         main {
@@ -9,6 +9,7 @@ android {
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
+            jniLibs.srcDir 'libs'
         }
 
         instrumentTest.setRoot('tests')
@@ -16,15 +17,15 @@ android {
 }
 
 // needed to add JNI shared libraries to APK when compiling on CLI
-tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
-    pkgTask.jniFolders = new HashSet<File>()
-    pkgTask.jniFolders.add(new File(projectDir, 'libs'))
-}
+//tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
+//    pkgTask.jniFolders = new HashSet<File>()
+//    pkgTask.jniFolders.add(new File(projectDir, 'libs'))
+//}
 
 // called every time gradle gets executed, takes the native dependencies of
 // the natives configuration, and extracts them to the proper libs/ folders
 // so they get packed with the APK.
-task copyAndroidNatives() { 
+task copyAndroidNatives() {
     file("libs/armeabi/").mkdirs();
     file("libs/armeabi-v7a/").mkdirs();
     file("libs/x86/").mkdirs();
