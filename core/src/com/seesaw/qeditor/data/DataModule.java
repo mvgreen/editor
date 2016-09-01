@@ -2,11 +2,9 @@ package com.seesaw.qeditor.data;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.Json;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
 
 /** Класс является СУБД, данные хранятся в отдельном объекте в виде HashMap-ов.
@@ -96,6 +94,11 @@ public class DataModule implements Data {
             i++;
         }
         return array;
+    }
+
+    @Override
+    public Step getStep(String id) {
+        return storage.steps.containsKey(id) ? storage.steps.get(id) : null;
     }
 
     @Override
@@ -213,6 +216,11 @@ public class DataModule implements Data {
     }
 
     @Override
+    public Answer getAnswer(String id) {
+        return storage.answers.containsKey(id) ? storage.answers.get(id) : null;
+    }
+
+    @Override
     public String getAnswerText(String id) {
         Answer a = storage.answers.get(id);
         return a != null ? a.text : "<Answer is not exists>";
@@ -240,6 +248,11 @@ public class DataModule implements Data {
     }
 
     @Override
+    public boolean answerHasStep(String id) {
+        return storage.answers.containsKey(id) && getAnswer(id).hasStep();
+    }
+
+    @Override
     public ArrayList<String> getAnswerScripts(String id) {
         return storage.answers.get(id).scripts;
     }
@@ -263,6 +276,11 @@ public class DataModule implements Data {
     }
 
     @Override
+    public boolean answerHasScripts(String id) {
+        return getAnswer(id).hasScripts();
+    }
+
+    @Override
     public void createTimer(String id) {
         Timer newTimer = new Timer(id);
         storage.timers.put(newTimer.id, newTimer);
@@ -282,6 +300,11 @@ public class DataModule implements Data {
             i++;
         }
         return array;
+    }
+
+    @Override
+    public Timer getTimer(String id) {
+        return storage.timers.containsKey(id) ? storage.timers.get(id) : null;
     }
 
     @Override
@@ -349,6 +372,11 @@ public class DataModule implements Data {
     }
 
     @Override
+    public boolean timerHasStep(String id) {
+        return getTimer(id).hasStep();
+    }
+
+    @Override
     public ArrayList<String> getTimerScripts(String id) {
         return storage.timers.get(id).scripts;
     }
@@ -372,6 +400,11 @@ public class DataModule implements Data {
     }
 
     @Override
+    public boolean timerHasScripts(String id) {
+        return getTimer(id).hasScripts();
+    }
+
+    @Override
     public void createScript(String id) {
         Script newScript = new Script(id);
         storage.scripts.put(newScript.id, newScript);
@@ -391,20 +424,6 @@ public class DataModule implements Data {
             i++;
         }
         return array;
-    }
-
-    @Override
-    public String getScriptCondition(String id) {
-        Script s = storage.scripts.get(id);
-        return s != null ? s.condition : "";
-    }
-
-    @Override
-    public boolean setScriptCondition(String id, String newCondition) {
-        if (!storage.scripts.containsKey(id))
-            return false;
-        storage.scripts.get(id).condition = newCondition;
-        return true;
     }
 
     @Override
@@ -452,8 +471,7 @@ public class DataModule implements Data {
 
         if (inScripts)
             for (Script script : storage.scripts.values()){
-                if (script.id.contains(substring) || script.condition.contains(substring)
-                        || script.algorithm.contains(substring))
+                if (script.id.contains(substring) || script.algorithm.contains(substring))
                     array.get(TYPE_SCRIPT).add(script.id);
             }
 

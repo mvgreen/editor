@@ -50,6 +50,8 @@ public interface Data {
     /** Возвращает список ID всех Шагов */
     String[] getSteps();
 
+    /** Возвращает Шаг с указанным ID или null, если такого Шага не существует */
+    Step getStep(String id);
 
     /** Возвращает отображаемый текст Шага */
     String getStepText(String id);
@@ -97,6 +99,8 @@ public interface Data {
     /** Возвращает список ID всех Ответов */
     String[] getAnswers();
 
+    /** Возвращает Ответ с указанным ID или null, если такого Ответа не существует */
+    Answer getAnswer(String id);
 
     /** Возвращает отображаемый текст Ответа */
     String getAnswerText(String id);
@@ -111,6 +115,8 @@ public interface Data {
     /** Устанавливает Шаг для безусловного перехода (ни один из скриптов не будет выполнен) */
     boolean setAnswerStep(String id, String newStep);
 
+    /** Возвращает true, если поле step указанного Ответа указывает не на null */
+    boolean answerHasStep(String id);
 
     /** Возвращает список связанных с Ответом Скриптов*/
     ArrayList<String> getAnswerScripts(String id);
@@ -120,6 +126,9 @@ public interface Data {
 
     /** Отсоединяет Скрипт от Ответа, Скрипт не удаляется из базы данных */
     boolean removeAnswerScript(String answerID, String scriptID);
+
+    /** Возвращает true, если список скриптов указанного Ответа не пуст */
+    boolean answerHasScripts(String id);
 
 
 
@@ -131,6 +140,9 @@ public interface Data {
 
     /** Возвращает список ID всех Таймеров */
     String[] getTimers();
+
+    /** Возвращает Таймер с указанным ID или null, если такого Таймера не существует */
+    Timer getTimer(String id);
 
 
     /** Возвращает время, установленное в Таймере, тип Таймера не учитывается */
@@ -163,6 +175,9 @@ public interface Data {
     /** Устанавливает новый привязанный к Таймеру Шаг */
     boolean setTimerStep(String id, String newStep);
 
+    /** Возвращает true, если поле step указанного Таймера указывает не на null */
+    boolean timerHasStep(String id);
+
 
     /** Возвращает список связанных с Таймером Скриптов*/
     ArrayList<String> getTimerScripts(String id);
@@ -173,6 +188,8 @@ public interface Data {
     /** Отсоединяет Скрипт от Таймера, Скрипт не удаляется из базы данных */
     boolean removeTimerScript(String answerID, String scriptID);
 
+    /** Возвращает true, если список скриптов указанного Таймера не пуст */
+    boolean timerHasScripts(String id);
 
 
     /** Создает новый Скрипт и возвращает его ID */
@@ -183,13 +200,6 @@ public interface Data {
 
     /** Возвращает список ID всех Скриптов */
     String[] getScripts();
-
-
-    /** Возвращает условие выполнения Скрипта */
-    String getScriptCondition(String id);
-
-    /** Заменяет условие выполнения Скрипта на новое */
-    boolean setScriptCondition(String id, String newCondition);
 
 
     /** Возвращает алгоритм Скрипта */
