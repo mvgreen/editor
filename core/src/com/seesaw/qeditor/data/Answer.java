@@ -22,4 +22,24 @@ public class Answer {
         step = "";
         scripts = new ArrayList<String>();
     }
+
+    public boolean hasStep(){
+        return step != null;
+    }
+
+    public String getStepId(){
+        return step;
+    }
+
+    public boolean hasScripts() {
+        return !scripts.isEmpty();
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public String getId() {
+        return id;
+    }
 }

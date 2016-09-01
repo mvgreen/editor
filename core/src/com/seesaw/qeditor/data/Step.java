@@ -22,4 +22,16 @@ public class Step {
         answers = new ArrayList<String>();
         timers = new ArrayList<String>();
     }
+
+    public ArrayList<String> getTimers() {
+        return timers;
+    }
+
+    public ArrayList<String> getAnswers() {
+        return answers;
+    }
+
+    public Clock getDelay(){
+        return delay;
+    }
 }

@@ -29,4 +29,24 @@ public class Timer {
         scripts = new ArrayList<String>();
         time = new Clock();
     }
+
+    public String getId(){
+        return id;
+    }
+
+    public Clock getTime() {
+        return time;
+    }
+
+    public boolean hasStep(){
+        return step != null;
+    }
+
+    public String getStepId(){
+        return step;
+    }
+
+    public boolean hasScripts() {
+        return !scripts.isEmpty();
+    }
 }
