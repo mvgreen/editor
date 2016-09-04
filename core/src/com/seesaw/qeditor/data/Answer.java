@@ -7,9 +7,8 @@ import java.util.ArrayList;
  *  При выборе ответа перебирается каждый из списков скриптов,
  *  в каждом списке выполняется первый скрипт, чье условие выполнится.
  *  Нам требуется лишь два списка. */
-public class Answer {
+public class Answer extends Field{
 
-    String                          id;
     String                          text;
     String                          step;
     ArrayList<String>               scripts;

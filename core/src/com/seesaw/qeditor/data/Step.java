@@ -5,9 +5,8 @@ import java.util.ArrayList;
 /** Шаг - Одна "реплика", после нее могут отобразиться варианты дальнейших действий.
  *  При переходе от одного узла к другому отображается текст (если он есть),
  *  останавливаются Таймеры старого Шага и запускаются Таймеры нового, сменяются Ответы.*/
-public class Step {
+public class Step extends Field{
 
-    String              id;
     String              text;
     Clock               delay;
     ArrayList<String>   answers;

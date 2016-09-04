@@ -8,13 +8,12 @@ import java.util.Date;
  *  При срабатывании перебирается каждый из списков скриптов,
  *  в каждом списке выполняется первый скрипт, чье условие выполнится.
  *  Нам требуется лишь два списка.*/
-public class Timer {
+public class Timer extends Field{
 
     static final int PLUS           = 1;
     static final int MINUS          = -1;
     static final int ALARM_CLOCK    = 0;
 
-    String                          id;
     Clock                           time;
     int                             type;
     boolean                         autoCancel;
